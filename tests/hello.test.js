@@ -16,6 +16,6 @@ test('should return hello world', async t => {
 
 	t.same(response.statusCode, 200);
 	t.same(response.json(), {
-		message: "hello world"
+		message: "Hello World"
 	})
 });
