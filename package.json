@@ -1,0 +1,24 @@
+{
+  "name": "fastify-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/educbraga/fastify-tutorial.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/educbraga/fastify-tutorial/issues"
+  },
+  "homepage": "https://github.com/educbraga/fastify-tutorial#readme",
+  "dependencies": {
+    "fastify": "^4.15.0",
+    "tap": "^16.3.4"
+  }
+}
