@@ -19,7 +19,7 @@ fastify.post('/products', function (request, reply) {
   )
 })
 
-// READ - GET ALL
+// READ
 fastify.get('/products', function (request, reply) {
   fastify.mysql.query(
     'SELECT id, name, price FROM products',
@@ -29,19 +29,30 @@ fastify.get('/products', function (request, reply) {
   )
 })
 
-// READ - SHOW ONE
 fastify.get('/products/:id', function (request, reply) {
   fastify.mysql.query(
     `SELECT id, name, price FROM products WHERE products.id = '${Number(request.params.id)}'`,
-    )
+    function onResult (error, result) {
+      reply.send(error || result)
+    })
 })
 
-fastify.put('/products', function (request, reply) {
-  reply.send({ hello: 'world' })
+// UPDATE
+fastify.put('/products/:id', function (request, reply) {
+  fastify.mysql.query(
+    `UPDATE products SET name = '${request.body.name}', price = '${request.body.price}' WHERE products.id = ${Number(request.params.id)}`,
+     function onResult (error, result) {
+      reply.send(error || result)
+  })
 })
 
-fastify.delete('/products', function (request, reply) {
-  reply.send({ hello: 'world' })
+// DELETE
+fastify.delete('/products/:id', function (request, reply) {
+  fastify.mysql.query(
+    `DELETE FROM products WHERE products.id = ${Number(request.params.id)}`,
+    function onResult (error, result) {
+      reply.send( error || result )
+    })
 })
 
 // Run the server!
